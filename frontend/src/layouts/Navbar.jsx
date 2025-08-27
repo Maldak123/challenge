@@ -1,16 +1,26 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
-import Avatar from "../assets/avatar.png";
+import Avatar from "../assets/navbar/avatar.png";
+import MenuImg from "../assets/navbar/menu.png";
+import Fechar from "../assets/navbar/fechar.png";
+import Sun from "../assets/navbar/sun.png";
 import Logo from "../assets/logoPb.png";
-import MenuImg from "../assets/menu.png";
-import Fechar from "../assets/fechar.png";
-import Sun from "../assets/sun.png"
 
 function Navbar() {
   const [ativo, setAtivo] = useState(false);
 
+  useEffect(() => {
+    if (ativo) {
+      document.body.style.overflow = 'hidden';
+    }
+
+    return () => {
+      document.body.style.overflow = 'auto';
+    };
+  }, [ativo]);
+
   return (
-    <header className="w-full h-16 bg-[#981FBA] flex justify-between py-2.5 px-4">
+    <header className="fixed w-screen h-16 bg-[#981FBA] flex justify-between py-2.5 px-6 z-999">
       <div className="flex gap-1">
         <img src={Logo} alt="Logo do Passa a Bola" className="w-11 h-11" />
         <p className="font-[Anton] text-white text-xl/[1.19]">
@@ -29,15 +39,24 @@ function Navbar() {
         />
       </div>
 
-      <span className={`${ativo ? "block" : "hidden"} top-0 left-0 w-full h-dvh bg-black fixed opacity-50`} onClick={() => {
-            setAtivo(!ativo);
-          }}></span>
-      <div className={`
-          fixed top-0 right-0 h-dvh w-2/3 bg-[#981FBA]
+      <span
+        className={`
+          absolute inset-0 bg-black bg-opacity-100 h-dvh
+          transition-opacity duration-300 ease-in-out
+          ${ativo ? "opacity-50" : "opacity-0 pointer-events-none"}
+        `}
+        onClick={() => {
+          setAtivo(!ativo);
+        }}
+      ></span>
+      <div
+        className={`
+          absolute top-0 right-0 h-dvh w-2/3 bg-[#981FBA]
           p-6 flex flex-col justify-between items-end
           transition-transform duration-300 ease-in-out
-          ${ativo ? 'translate-x-0' : 'translate-x-full'}
-        `}>
+          ${ativo ? "translate-x-0" : "translate-x-full"}
+        `}
+      >
         <img
           src={Fechar}
           className="w-6 h-6"
