@@ -67,9 +67,9 @@ function Navbar() {
 
         <nav className="w-full">
           <ul className="w-full flex flex-col gap-3.5 uppercase text-left text-white font-bold text-2xl">
-            <li>campeonatos</li>
-            <li>Placares de jogos</li>
-            <li>notícias</li>
+            <li>próximos encontros</li>
+            <li>Placares e noticias</li>
+            <li>sobre</li>
           </ul>
         </nav>
 
