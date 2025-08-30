@@ -12,7 +12,7 @@ import PointVerm from "../assets/point.png";
 
 function Home() {
   return (
-    <main className="py-16">
+    <main className="py-16 relative">
       <section className="w-full h-[85lvh] relative">
         <div className="absolute w-full h-full overflow-hidden -z-999 flex justify-center">
           <img src={HeroBg} alt="" className="w-full h-full object-cover pointer-events-none select-none" />
@@ -32,10 +32,10 @@ function Home() {
       </section>
 
       <div className="flex flex-col gap-4">
-        <section className="w-full h-fit relative">
+        <section className="w-full h-fit relative -top-4">
           <Banner img={BannerVerm} cor={"#BA1B31"} txt={"próximos encontros"}></Banner>
 
-          <div className="flex flex-col gap-2 p-6 pt-36 items-center">
+          <div className="flex flex-col gap-2 p-6 items-center">
             <div className="w-full text-center p-2 relative">
               <span className="absolute inset-0 w-full h-full bg-[#BA1B31] -rotate-[3.17deg]"></span>
               <p className="text-sm font-bold text-[18px] -rotate-[3.17deg] text-white uppercase">
@@ -66,10 +66,10 @@ function Home() {
           </div>
         </section>
 
-        <section className="w-full h-fit relative">
+        <section className="w-full h-fit">
           <Banner img={BannerVerde} cor={"#6EAA38"} txt={"placares e notícias"}></Banner>
 
-          <div className="flex flex-col gap-2.5 p-6 pt-36 items-center">
+          <div className="flex flex-col gap-2.5 p-6 items-center">
             <Liga></Liga>
             <Liga></Liga>
           </div>
