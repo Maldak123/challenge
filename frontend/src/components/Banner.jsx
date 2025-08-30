@@ -1,6 +1,6 @@
 function Banner({ img, cor, txt, comp }) {
   return (
-    <div style={{ backgroundImage: `url(${img})` }} className={`w-full min-h-[150px] py-10 bg-[url(..${img})] bg-no-repeat bg-cover absolute -top-5 flex flex-col gap-3.25 justify-center items-center`}>
+    <div style={{ backgroundImage: `url(${img})` }} className={`w-full max-h-[150px] py-10 bg-contain absolute -top-5 flex flex-col gap-3.25 justify-center items-center`}>
       <div className="p-2 bg-white -rotate-[3.17deg] w-fit">
         <h2 style={{ color: `${cor}` }} className={`w-full uppercase font-[Anton] text-4xl`}>{txt}</h2>
       </div>
