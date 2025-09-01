@@ -19,13 +19,22 @@ function Liga() {
         nome: "Brasil",
         placar: 4,
         img: Brasil,
-        scorers: ["Angelina 45+9' (P)", "Amanda Gutierres 80'", "Marta 90+6', 105'"],
+        scorers: [
+          "Angelina 45+9' (P)",
+          "Amanda Gutierres 80'",
+          "Marta 90+6', 105'",
+        ],
       },
       time2: {
         nome: "Colômbia",
         placar: 4,
         img: Colombia,
-        scorers: ["Linda Caicedo 25'", "Taciane 69' (GC)", "Mayra Ramírez 88'", "Leicy Santos 115'"],
+        scorers: [
+          "Linda Caicedo 25'",
+          "Taciane 69' (GC)",
+          "Mayra Ramírez 88'",
+          "Leicy Santos 115'",
+        ],
       },
       penalty_score: "5-4",
       data: "02/08/2025",
@@ -67,7 +76,7 @@ function Liga() {
 
   return (
     <>
-      <div className="flex flex-col w-full gap-2.5">
+      <div className="flex w-full flex-col gap-2.5">
         <LigaHeader />
         <div className="flex gap-3 overflow-x-auto p-1">
           {jogos.map((jogo) => (
@@ -75,7 +84,11 @@ function Liga() {
           ))}
         </div>
       </div>
-      <Modal active={modalActive} jogo={jogoSelecionado} onClose={handleCloseModal} />
+      <Modal
+        active={modalActive}
+        jogo={jogoSelecionado}
+        onClose={handleCloseModal}
+      />
     </>
   );
 }

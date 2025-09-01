@@ -4,76 +4,71 @@ import Avatar from "../assets/navbar/avatar.png";
 import MenuImg from "../assets/navbar/menu.png";
 import Fechar from "../assets/navbar/fechar.png";
 import Sun from "../assets/navbar/sun.png";
-import Logo from "../assets/logoPb.png";
+import Logo from "../assets/navbar/navbar-logo.png";
 
 function Navbar() {
   const [ativo, setAtivo] = useState(false);
 
   useEffect(() => {
     if (ativo) {
-      document.body.style.overflow = 'hidden';
+      document.body.style.overflow = "hidden";
     }
 
     return () => {
-      document.body.style.overflow = 'auto';
+      document.body.style.overflow = "auto";
     };
   }, [ativo]);
 
   return (
-    <header className="fixed w-screen h-16 bg-[#981FBA] flex justify-between py-2.5 px-6 z-999">
+    <header className="fixed z-999 flex h-16 w-screen justify-between bg-[#981FBA] px-6 py-2.5 lg:h-20">
       <div className="flex gap-1">
-        <img src={Logo} alt="Logo do Passa a Bola" className="w-11 h-11" />
-        <p className="font-[Anton] text-white text-xl/[1.19]">
-          PASSA <br /> A BOLA
-        </p>
+        <img src={Logo} alt="Logo do Passa a Bola" className="h-11 lg:h-15" />
       </div>
-      <div className="flex gap-2.5 items-center">
-        <img src={Avatar} alt="Profile icon" className="w-6 h-6" />
-        <img
-          src={MenuImg}
-          alt="Menu"
-          className="w-6 h-6"
-          onClick={() => {
-            setAtivo(!ativo);
-          }}
-        />
+
+      <div className="flex items-center gap-2.5">
+        <button className="cursor-pointer">
+          <img src={Avatar} alt="Profile icon" className="size-6 lg:size-10" />
+        </button>
+
+        <button className="cursor-pointer">
+          <img
+            src={MenuImg}
+            alt="Menu"
+            className="size-6 lg:size-10"
+            onClick={() => {
+              setAtivo(!ativo);
+            }}
+          />
+        </button>
       </div>
 
       <span
-        className={`
-          absolute inset-0 bg-black bg-opacity-100 h-dvh
-          transition-opacity duration-300 ease-in-out
-          ${ativo ? "opacity-50" : "opacity-0 pointer-events-none"}
-        `}
+        className={`bg-opacity-100 absolute inset-0 h-dvh bg-black transition-opacity duration-300 ease-in-out ${ativo ? "opacity-50" : "pointer-events-none opacity-0"} `}
         onClick={() => {
           setAtivo(!ativo);
         }}
       ></span>
+
       <div
-        className={`
-          absolute top-0 right-0 h-dvh w-2/3 bg-[#981FBA]
-          p-6 flex flex-col justify-between items-end
-          transition-transform duration-300 ease-in-out
-          ${ativo ? "translate-x-0" : "translate-x-full"}
-        `}
+        className={`absolute top-0 right-0 flex h-dvh w-2/3 flex-col items-end justify-between bg-[#981FBA] p-6 transition-transform duration-300 ease-in-out lg:w-1/4 ${ativo ? "translate-x-0" : "translate-x-full"} `}
       >
         <img
           src={Fechar}
-          className="w-6 h-6"
+          className="h-6 w-6"
           onClick={() => {
             setAtivo(!ativo);
           }}
         />
 
-        <nav className="w-full">
-          <ul className="w-full flex flex-col gap-3.5 uppercase text-left text-white font-bold text-2xl">
+        <nav className="max-w-[99%] self-start">
+          <ul className="flex w-full flex-col gap-3.5 text-left text-2xl font-bold text-white uppercase">
             <li>próximos encontros</li>
             <li>Placares e noticias</li>
             <li>sobre</li>
           </ul>
         </nav>
 
-        <img src={Sun} alt="Toggle Dark Mode" className="w-6 h-6" />
+        <img src={Sun} alt="Toggle Dark Mode" className="h-6 w-6" />
       </div>
     </header>
   );

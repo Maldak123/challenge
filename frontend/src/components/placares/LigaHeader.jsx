@@ -3,9 +3,9 @@ import CopaAmerica from "../../assets/placares/copa-america.png";
 
 function LigaHeader() {
   return (
-    <div className="flex justify-between items-center">
-      <div className="flex gap-2.5 items-center">
-        <div className="size-10 flex justify-center items-center relative border rounded-lg border-[rgba(0,0,0,0.25)]">
+    <div className="flex items-center justify-between">
+      <div className="flex items-center gap-2.5">
+        <div className="relative flex size-10 items-center justify-center rounded-lg border border-[rgba(0,0,0,0.25)]">
           <img
             src={CopaAmerica}
             alt="Logo da Copa América Feminina"
@@ -19,8 +19,8 @@ function LigaHeader() {
         </div>
       </div>
 
-      <div className="flex items-center gap-1 h-fit">
-        <p className="text-[#6EAA38] hover:underline text-xs">Ver tudo</p>
+      <div className="flex h-fit items-center gap-1">
+        <p className="text-xs text-[#6EAA38] hover:underline">Ver tudo</p>
         <img className="size-4" src={PointVerde} alt="Ver todos os jogos" />
       </div>
     </div>
