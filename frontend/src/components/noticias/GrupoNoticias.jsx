@@ -44,9 +44,9 @@ function GrupoNoticias() {
 
   return (
     <div className="flex flex-wrap gap-2.5 relative">
-      {dados.noticias.map((e) =>
+      {dados.noticias.map((e, index) =>
         (<Noticia
-          key={e.id}
+          key={index}
           titulo={e.titulo}
           resumo={e.resumo}
           fonte={e.fonte}

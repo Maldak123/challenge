@@ -42,11 +42,11 @@ function Footer() {
           <div className="flex flex-col gap-4 text-white w-full mt-4">
             <div className="flex flex-col gap-3">
               <h3 className="font-bold">Links Rápidos:</h3>
-              <li className="list-none underline text-sm flex flex-col gap-1">
-                <ul>Próximos Encontros</ul>
-                <ul>Placares e Notícias</ul>
-                <ul>Sobre o Passa a Bola</ul>
-              </li>
+              <ul className="list-none underline text-sm flex flex-col gap-1">
+                <li>Próximos Encontros</li>
+                <li>Placares e Notícias</li>
+                <li>Sobre o Passa a Bola</li>
+              </ul>
             </div>
             <span className="w-full border-1 opacity-50"></span>
           </div>

@@ -78,9 +78,9 @@ function Liga() {
     <>
       <div className="flex w-full flex-col gap-2.5">
         <LigaHeader />
-        <div className="flex gap-3 overflow-x-auto p-1">
-          {jogos.map((jogo) => (
-            <Jogo key={jogo.id} jogo={jogo} onClick={handleJogoClick} />
+        <div className="flex gap-3 overflow-x-auto p-1 w-full">
+          {jogos.map((jogo, index) => (
+            <Jogo key={index} jogo={jogo} onClick={handleJogoClick} />
           ))}
         </div>
       </div>
