@@ -78,7 +78,11 @@ function Liga() {
     <>
       <div className="flex w-full flex-col gap-2.5">
         <LigaHeader />
-        <div className="flex gap-3 overflow-x-auto p-1 w-full">
+        <div
+        className="flex w-full gap-3 overflow-x-auto p-1"
+        tabIndex="0"
+        aria-label="Lista de jogos"
+      >
           {jogos.map((jogo, index) => (
             <Jogo key={index} jogo={jogo} onClick={handleJogoClick} />
           ))}
