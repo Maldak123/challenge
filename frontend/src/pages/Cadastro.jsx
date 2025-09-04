@@ -66,7 +66,7 @@ const Cadastro = () => {
             />
 
             <Input
-              label="Digite seu CPF"
+              label="Insira sua data de nascimento"
               type="date"
               date="DD/MM/YYYY"
               name="data"
