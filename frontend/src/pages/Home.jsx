@@ -13,7 +13,6 @@ import BannerVerde from "../assets/sections/faixa-verde.png";
 import BannerVerdeDesk from "../assets/sections/faixa-verde-desktop.png";
 import BannerRoxa from "../assets/sections/faixa-roxa.png";
 import FaixaVerm from "../assets/sections/banner-verm.png";
-import PointVerm from "../assets/point.png";
 
 function Home() {
   return (
