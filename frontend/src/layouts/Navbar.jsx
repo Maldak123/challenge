@@ -1,10 +1,8 @@
 import { useState, useEffect } from "react";
+import { SunDim, X, CircleUserRound, Menu } from 'lucide-react'
 
-import Avatar from "../assets/navbar/avatar.png";
-import MenuImg from "../assets/navbar/menu.png";
-import Fechar from "../assets/navbar/fechar.png";
-import Sun from "../assets/navbar/sun.png";
-import Logo from "../assets/navbar/navbar-logo.png";
+
+import Logo from "../assets/logo.png";
 
 function Navbar() {
   const [ativo, setAtivo] = useState(false);
@@ -29,7 +27,7 @@ function Navbar() {
 
       <div className="flex items-center gap-2.5">
         <a href="#" className="cursor-pointer">
-          <img src={Avatar} alt="Profile icon" className="size-6 lg:size-10" />
+          <CircleUserRound color="#ffffff" className="cursor-pointer size-6 lg:size-8 text-white" />
         </a>
 
         <button
@@ -38,7 +36,7 @@ function Navbar() {
             setAtivo(!ativo);
           }}
         >
-          <img src={MenuImg} alt="Menu" className="size-6 lg:size-10" />
+          <Menu color="#ffffff" className="cursor-pointer size-6 lg:size-8 text-white" />
         </button>
       </div>
 
@@ -57,11 +55,8 @@ function Navbar() {
             setAtivo(!ativo);
           }}
         >
-          <img
-            src={Fechar}
-            className="h-6 w-6 cursor-pointer"
-            alt="Fechar Menu"
-          />
+
+          <X color="#ffffff" className="cursor-pointer size-6 lg:size-8 text-white" />
         </button>
 
         <nav className="max-w-[99%] self-start">
@@ -72,7 +67,7 @@ function Navbar() {
           </ul>
         </nav>
 
-        <img src={Sun} alt="Toggle Dark Mode" className="h-6 w-6" />
+        <SunDim className='size-8 text-white' />
       </div>
     </header>
   );

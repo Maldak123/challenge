@@ -1,3 +1,5 @@
+import { ArrowRight } from "lucide-react";
+
 import Banner from "../components/home/Banner";
 import Encontro from "../components/home/Encontro";
 import Liga from "../components/placares/Liga";
@@ -5,7 +7,7 @@ import GrupoNoticias from "../components/noticias/GrupoNoticias";
 import SobreSecoes from "../components/home/SobreSecoes";
 
 import HeroBg from "../assets/hero/hero.png";
-import Logo from "../assets/logoPb.png";
+import Logo from "../assets/hero/logoPb.png";
 import BannerVerm from "../assets/sections/faixa-verm.png";
 import BannerVerde from "../assets/sections/faixa-verde.png";
 import BannerVerdeDesk from "../assets/sections/faixa-verde-desktop.png";
@@ -15,7 +17,7 @@ import PointVerm from "../assets/point.png";
 
 function Home() {
   return (
-    <main className="relative flex flex-col items-center pt-16">
+    <main className="relative flex flex-col items-center pt-16 lg:pt-20">
       <section className="relative h-[85lvh] w-full">
         <div className="absolute -z-999 flex h-full w-full justify-center overflow-hidden">
           <img
@@ -51,34 +53,19 @@ function Home() {
             <SobreSecoes
               cor="#BA1B31"
               txt="Jogue com a gente! Gratuito e para todas."
-            ></SobreSecoes>
+            />
 
             <div className="relative mt-4 flex w-full">
               <div className="flex gap-3 overflow-x-auto scroll-smooth p-4">
-                <Encontro
-                  nome="Encontro nº1"
-                  diaI="27/10/2025"
-                  diaF="30/10/2025"
-                  img={FaixaVerm}
-                />
-                <Encontro
-                  nome="Encontro nº1"
-                  diaI="27/10/2025"
-                  diaF="30/10/2025"
-                  img={FaixaVerm}
-                />
-                <Encontro
-                  nome="Encontro nº1"
-                  diaI="27/10/2025"
-                  diaF="30/10/2025"
-                  img={FaixaVerm}
-                />
-                <Encontro
-                  nome="Encontro nº1"
-                  diaI="27/10/2025"
-                  diaF="30/10/2025"
-                  img={FaixaVerm}
-                />
+                {[...Array(5)].map((_, i) => (
+                  <Encontro
+                    key={i}
+                    nome={`Encontro nº${i + 1}`}
+                    diaI="27/10/2025"
+                    diaF="30/10/2025"
+                    img={FaixaVerm}
+                  />
+                ))}
               </div>
             </div>
 
@@ -90,9 +77,9 @@ function Home() {
                 </p>
               </div>
 
-              <div className="flex h-fit items-center gap-1">
-                <p className="text-[#BA1B31] hover:underline">Ver tudo</p>
-                <img className="h-6 w-6" src={PointVerm} alt="" />
+              <div className="flex h-fit w-fit cursor-pointer items-center gap-1 self-end">
+                <a className="text-[#BA1B31] hover:underline">Ver tudo</a>
+                <ArrowRight color="#BA1B31" className="size-6" />
               </div>
             </div>
           </div>
@@ -100,21 +87,33 @@ function Home() {
 
         <section className="h-fit w-full">
           <Banner
-            img={BannerVerdeDesk} cor={"#6EAA38"} txt={"placares e notícias"}
+            img={BannerVerdeDesk}
+            cor={"#6EAA38"}
+            txt={"placares e notícias"}
           />
           <div className="relative -top-5 mx-auto flex w-full flex-col items-center gap-6 p-6 lg:max-w-[70%]">
             <SobreSecoes
               cor="#6EAA38"
               txt="fique ligada em tudo que tá rolando por ai!"
-            ></SobreSecoes>
+            />
 
-            <div className="flex w-full flex-col items-center gap-2.5 lg:gap-5">
+            <div className="flex w-full flex-col items-center gap-4 lg:gap-5">
               <Liga />
               <Liga />
+
+              <div className="flex h-fit w-fit cursor-pointer items-center gap-1 self-end">
+                <a className="text-[#6EAA38] hover:underline">Ver tudo</a>
+                <ArrowRight color="#6EAA38" className="size-6" />
+              </div>
             </div>
 
-            <div className="w-full lg:max-h-fit">
+            <div className="flex w-full flex-col gap-4 lg:max-h-fit">
               <GrupoNoticias />
+
+              <div className="flex h-fit w-fit cursor-pointer items-center gap-1 self-end">
+                <a className="text-[#6EAA38] hover:underline">Ver tudo</a>
+                <ArrowRight color="#6EAA38" className="size-6" />
+              </div>
             </div>
           </div>
         </section>

@@ -9,9 +9,9 @@ function App() {
     <>
       <Navbar/>
 
-      {/* <Home/> */}
+      <Home/>
       {/* <Login/> */}
-      <Cadastro/>
+      {/* <Cadastro/> */}
 
       <Footer/>
     </>

@@ -1,5 +1,6 @@
 import React from "react";
-import Fechar from "../../assets/navbar/fechar.png";
+import { X } from 'lucide-react'
+
 import CopaAmericaIcon from "../../assets/placares/copa-america.png";
 
 function Modal({ active, jogo, onClose }) {
@@ -16,11 +17,16 @@ function Modal({ active, jogo, onClose }) {
     >
       <div className="relative flex w-full max-w-sm flex-col gap-4 rounded-lg bg-white p-4 shadow-lg lg:max-w-lg lg:gap-6 lg:p-6">
         <button onClick={onClose}>
-          <img
+          <X
+            color="#000"
+            className="size-8 h-6 w-6 cursor-pointer text-white"
+          />
+
+          {/* <img
             src={Fechar}
             className="absolute top-3 right-3 h-6 w-6 cursor-pointer lg:top-4 lg:right-4 lg:h-7 lg:w-7"
             alt="Fechar modal"
-          />
+          /> */}
         </button>
 
         <div className="mt-2 flex items-center gap-3 lg:gap-4">

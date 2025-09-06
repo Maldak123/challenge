@@ -1,66 +1,28 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import LigaHeader from "./LigaHeader";
 import Jogo from "./Jogo";
 import Modal from "./Modal";
 
-import Brasil from "../../assets/placares/brasil.png";
-import Colombia from "../../assets/placares/colombia.png";
+const BACKEND_URL = "http://localhost:5000/api/";
 
 function Liga() {
   const [modalActive, setModalActive] = useState(false);
   const [jogoSelecionado, setJogoSelecionado] = useState(null);
+  const [ligasExibidas, setLigasExibidas] = useState([]);
 
-  const jogos = [
-    {
-      id: 1,
-      competition: "Copa América Feminina",
-      stage: "Final",
-      time1: {
-        nome: "Brasil",
-        placar: 4,
-        img: Brasil,
-        scorers: [
-          "Angelina 45+9' (P)",
-          "Amanda Gutierres 80'",
-          "Marta 90+6', 105'",
-        ],
-      },
-      time2: {
-        nome: "Colômbia",
-        placar: 4,
-        img: Colombia,
-        scorers: [
-          "Linda Caicedo 25'",
-          "Taciane 69' (GC)",
-          "Mayra Ramírez 88'",
-          "Leicy Santos 115'",
-        ],
-      },
-      penalty_score: "5-4",
-      data: "02/08/2025",
-      status: "Fim de jogo",
-    },
-    {
-      id: 2,
-      competition: "Copa América Feminina",
-      stage: "Final",
-      time1: {
-        nome: "Brasil",
-        placar: 2,
-        img: Brasil,
-        scorers: [],
-      },
-      time2: {
-        nome: "Colômbia",
-        placar: 1,
-        img: Colombia,
-        scorers: [],
-      },
-      penalty_score: null,
-      data: "05/08/2025",
-      status: "Fim de jogo",
-    },
-  ];
+  useEffect(() => {
+    const fetchLigas = async () => {
+      try {
+        const response = await fetch(`${BACKEND_URL}ligas`);
+        const data = await response.json();
+        setLigasExibidas(data);
+      } catch (error) {
+        console.error("Erro ao buscar dados das ligas:", error.message);
+      }
+    };
+
+    fetchLigas();
+  }, []);
 
   const handleJogoClick = (jogo) => {
     setJogoSelecionado(jogo);
@@ -76,18 +38,46 @@ function Liga() {
 
   return (
     <>
-      <div className="flex w-full flex-col gap-2.5">
-        <LigaHeader />
-        <div
-        className="flex w-full gap-3 overflow-x-auto p-1"
-        tabIndex="0"
-        aria-label="Lista de jogos"
-      >
-          {jogos.map((jogo, index) => (
-            <Jogo key={index} jogo={jogo} onClick={handleJogoClick} />
-          ))}
-        </div>
-      </div>
+      {ligasExibidas.length === 0 ? (
+        <p>Nenhuma liga disponível no momento.</p>
+      ) : (
+        ligasExibidas.map((liga, index) => (
+          <div key={index} className="flex w-full flex-col gap-2.5">
+            <LigaHeader info={liga.info} />
+            <div
+              className="flex w-full gap-3 overflow-x-auto p-1"
+              tabIndex="0"
+              aria-label={`Lista de jogos da liga ${liga.nome}`}
+            >
+              {(liga.jogosFuturos.length > 0
+                ? liga.jogosFuturos
+                : liga.jogosPassados
+              ).map((jogo, index) => (
+                <Jogo
+                  key={index}
+                  jogo={{
+                    time1: {
+                      nome: jogo.strHomeTeam,
+                      placar: jogo.intHomeScore || "-",
+                      img: jogo.strHomeTeamBadge,
+                    },
+                    time2: {
+                      nome: jogo.strAwayTeam,
+                      placar: jogo.intAwayScore || "-",
+                      img: jogo.strAwayTeamBadge,
+                    },
+                    competition: jogo.strLeague,
+                    stage: jogo.strStage,
+                    data: jogo.dateEvent,
+                    status: jogo.strStatus,
+                  }}
+                  onClick={handleJogoClick}
+                />
+              ))}
+            </div>
+          </div>
+        ))
+      )}
       <Modal
         active={modalActive}
         jogo={jogoSelecionado}
