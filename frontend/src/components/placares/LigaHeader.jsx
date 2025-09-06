@@ -1,4 +1,3 @@
-import PointVerde from "../../assets/point-verde.png";
 import CopaAmerica from "../../assets/placares/copa-america.png";
 
 function LigaHeader() {
@@ -17,16 +16,10 @@ function LigaHeader() {
         <p className="lg:text-base">Finais</p>
       </div>
 
-      <button className="flex h-fit flex-shrink-0 items-center gap-1 lg:gap-1.5">
-        <p className="whitespace-nowrap text-xs text-[#6EAA38] hover:underline lg:text-sm">
-          Ver tudo
-        </p>
-        <img
-          className="size-4 lg:size-5"
-          src={PointVerde}
-          alt="Ver todos os jogos"
-        />
-      </button>
+      <div className="flex h-fit w-fit cursor-pointer items-center gap-1 self-end">
+        <a className="text-[#6EAA38] hover:underline">Ver tudo</a>
+        <ArrowRight color="#6EAA38" className="size-6" />
+      </div>
     </div>
   );
 }

@@ -3,7 +3,7 @@ import LigaHeader from "./LigaHeader";
 import Jogo from "./Jogo";
 import Modal from "./Modal";
 
-const BACKEND_URL = "http://localhost:5000/api/";
+const BACKEND_URL = "http://localhost:5000/";
 
 function Liga() {
   const [modalActive, setModalActive] = useState(false);
@@ -16,6 +16,7 @@ function Liga() {
         const response = await fetch(`${BACKEND_URL}ligas`);
         const data = await response.json();
         setLigasExibidas(data);
+        console.log(data)
       } catch (error) {
         console.error("Erro ao buscar dados das ligas:", error.message);
       }
